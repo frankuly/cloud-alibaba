@@ -1,0 +1,7 @@
+com\itmuch\usercenter\controller\user\UserController.class
+com\itmuch\usercenter\dao\user\UserMapper.class
+com\itmuch\usercenter\UserCenterApplication.class
+com\itmuch\usercenter\TestController.class
+com\itmuch\usercenter\service\user\UserService.class
+com\itmuch\usercenter\domian\entity\user\User$UserBuilder.class
+com\itmuch\usercenter\domian\entity\user\User.class

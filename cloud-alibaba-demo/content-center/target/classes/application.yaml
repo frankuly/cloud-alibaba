@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: content-center
+  datasource:
+    url: jdbc:mysql://localhost:3306/content_center
+    hikari:
+      username: root
+      password: 123456
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.9.157:8848
+        #cluster-name: SH
+        #默认public 无需namspace ID
+        #dev namspace ID
+        namespace: e01b2fa8-77b8-4fb4-9278-826132443beb
+        group: DEV_GROUP
+    sentinel:
+      filter:
+        #关闭掉对Spring MVC端点的保护
+        enabled: false
+      transport:
+        dashboard: 192.168.9.157:8720
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+server:
+  port: 8010
+
+#user-center:
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: user-center
+logging:
+  level:
+    com.itmuch.contentcenter.feignclient.UserCenterFeignClient: debug
+feign:
+  client:
+    config:
+      #user-cennter
+      default:
+        loggerLevel: full
+  httpclient:
+    enabled: true
+    max-connections: 200
+    max-connections-per-route: 50
+resttemplate:
+  sentinel:
+    enabled: false

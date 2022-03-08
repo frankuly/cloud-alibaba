@@ -1,0 +1,15 @@
+server:
+  port: 8040
+spring:
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.9.157:8848
+        namespace: e01b2fa8-77b8-4fb4-9278-826132443beb
+        group: DEV_GROUP
+    gateway:
+      discovery:
+        locator:
+          enabled: true
